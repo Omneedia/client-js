@@ -5,7 +5,8 @@
   "keywords": [
     "javascript",
     "typescript",
-    "omneedia"
+    "omneedia",
+    "client-js"
   ],
   "homepage": "https://github.com/omneedia/client-js",
   "bugs": "https://github.com/omneedia/client-js/issues",
