@@ -1,84 +1,63 @@
-# `supabase-js`
+# `client-js`
 
-An isomorphic JavaScript client for Supabase.
+An isomorphic JavaScript client for Omneedia.
 
-- **Documentation:** https://supabase.com/docs/reference
-- TypeDoc: https://supabase.github.io/supabase-js/v2/
+- **Documentation:** https://omneedia.com/docs/reference
+- TypeDoc: https://supabase.github.io/omneedia/client-js/
 
 ## Usage
 
 First of all, you need to install the library:
 
 ```sh
-npm install @omneedia/supabase-js
+npm install @omneedia/client-js
 ```
 
 Then you're able to import the library and establish the connection with the database:
 
 ```js
-import { createClient } from '@omneedia/supabase-js'
+import { createClient } from '@omneedia/client-js'
 
-// Create a single supabase client for interacting with your database
+// Create a single omneedia client for interacting with your database
 const supabase = createClient('https://xyzcompany.supabase.co', 'public-anon-key')
 ```
 
 ### UMD
 
-You can now use plain `<script>`s to import supabase-js from CDNs, like:
+You can now use plain `<script>`s to import client-js from CDNs, like:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@omneedia/supabase-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@omneedia/client-js"></script>
 ```
 
 or even:
 
 ```html
-<script src="https://unpkg.com/@omneedia/supabase-js"></script>
+<script src="https://unpkg.com/@omneedia/client-js"></script>
 ```
 
-Then you can use it from a global `supabase` variable:
+Then you can use it from a global `omneedia` variable:
 
 ```html
 <script>
-  const { createClient } = supabase
-  const _supabase = createClient('https://xyzcompany.supabase.co', 'public-anon-key')
+  const { createClient } = omneedia
+  const _omneedia = createClient('https://xyzcompany.supabase.co', 'public-anon-key')
 
-  console.log('Supabase Instance: ', _supabase)
+  console.log('Omneedia Instance: ', _omneedia)
   // ...
 </script>
 ```
 
 ### ESM
 
-You can now use type="module" `<script>`s to import supabase-js from CDNs, like:
+You can now use type="module" `<script>`s to import client-js from CDNs, like:
 
 ```html
 <script type="module">
-  import { createClient } from 'https://cdn.jsdelivr.net/npm/@omneedia/supabase-js/+esm'
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@omneedia/client-js/+esm'
   const supabase = createClient('https://xyzcompany.supabase.co', 'public-anon-key')
 
-  console.log('Supabase Instance: ', supabase)
+  console.log('Omneedia Instance: ', omneedia)
   // ...
 </script>
 ```
-
-### Custom `fetch` implementation
-
-`supabase-js` uses the [`cross-fetch`](https://www.npmjs.com/package/cross-fetch) library to make HTTP requests, but an alternative `fetch` implementation can be provided as an option. This is most useful in environments where `cross-fetch` is not compatible, for instance Cloudflare Workers:
-
-```js
-import { createClient } from '@omneedia/supabase-js'
-
-// Provide a custom `fetch` implementation as an option
-const supabase = createClient('https://xyzcompany.supabase.co', 'public-anon-key', {
-  global: {
-    fetch: (...args) => fetch(...args),
-  },
-})
-```
-
-## Sponsors
-
-We are building the features of Firebase using enterprise-grade, open source products. We support existing communities wherever possible, and if the products don’t exist we build them and open source them ourselves. Thanks to these sponsors who are making the OSS ecosystem better for everyone.
-
-[![New Sponsor](https://user-images.githubusercontent.com/10214025/90518111-e74bbb00-e198-11ea-8f88-c9e3c1aa4b5b.png)](https://github.com/sponsors/supabase)
