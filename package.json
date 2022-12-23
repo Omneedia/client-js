@@ -1,0 +1,66 @@
+{
+  "name": "@omneedia/client-js",
+  "version": "0.0.0-automated",
+  "description": "Isomorphic Javascript client for Omneedia",
+  "keywords": [
+    "javascript",
+    "typescript",
+    "omneedia"
+  ],
+  "homepage": "https://github.com/omneedia/client-js",
+  "bugs": "https://github.com/omneedia/client-js/issues",
+  "license": "MIT",
+  "author": "Omneedia",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "types": "dist/module/index.d.ts",
+  "sideEffects": false,
+  "repository": "omneedia/client-js",
+  "scripts": {
+    "clean": "rimraf dist docs",
+    "format": "prettier --write \"{src,test}/**/*.ts\"",
+    "build": "run-s clean format build:*",
+    "build:main": "tsc -p tsconfig.json",
+    "build:module": "tsc -p tsconfig.module.json",
+    "build:umd": "webpack",
+    "types-generate": "dts-gen -m '@omneedia/client-js' -s"
+  },
+  "dependencies": {
+    "@omneedia/functions-js": "^1.0.0",
+    "@omneedia/auth-js": "^1.0.0",
+    "@omneedia/postgrest-js": "^1.0.0",
+    "@omneedia/realtime-js": "^1.0.0",
+    "@omneedia/storage-js": "^1.0.0",
+    "cross-fetch": "^3.1.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.13",
+    "husky": "^4.3.0",
+    "jest": "^26.4.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.3",
+    "rimraf": "^3.0.2",
+    "semantic-release-plugin-update-version-in-files": "^1.1.0",
+    "ts-jest": "^26.3.0",
+    "ts-loader": "^8.0.11",
+    "typedoc": "^0.22.16",
+    "typescript": "^4.5.5",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "jsdelivr": "dist/umd/omneedia.js",
+  "unpkg": "dist/umd/omneedia.js",
+  "publishConfig": {
+    "access": "public"
+  }
+}
