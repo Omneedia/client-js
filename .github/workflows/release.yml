@@ -30,7 +30,7 @@ jobs:
       - name: Create a release
         uses: cycjimmy/semantic-release-action@v3
         with:
-          semantic_version: 15.13.28
+          semantic_version: 18.0.0
           dry_run: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
