@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../dist/umd/omneedia.js"></script>
+</head>
+
+<body>
+    <div id="presence"></div>
+    <script>
+        var o = omneedia.createClient(
+            //'https://api.omneedia.com',
+            'https://mighty-goose-87.demo.omneedia.net',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6Im9tbmVlZGlhIiwiaWF0IjoxNjczODA4NzcyLCJleHAiOjE4Mjk2ODkyMDB9.BHyKhlEkyjo3ZW_7rxw05nKIFMpyJawb5nP2n4y8r5A'
+        );
+        var subscribed = false;
+        var UserId;
+
+        async function signInWithProvider() {
+            var { data, error } = await o.auth.signInWithProvider({
+                provider: 'github'
+            })
+            console.log('->', data);
+            console.log('->', error);
+        }
+        signInWithProvider();
+
+    </script>
+</body>
+
+</html>

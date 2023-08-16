@@ -1,0 +1,16 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+.auth {
+    display: none
+}
+
+.login {
+    display: none
+}
+
+pre {
+    margin: 10px;
+}

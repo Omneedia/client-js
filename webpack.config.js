@@ -25,9 +25,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.json'],
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      process: 'process/browser',
-    }),
-  ],
+  plugins: [],
+  mode: 'production',
+  externals: [],
 }

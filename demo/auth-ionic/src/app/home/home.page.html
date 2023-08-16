@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Démo
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Demo</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-button (click)="logout()">Logout</ion-button>
+  <pre>
+  {{info | json}}
+  </pre>
+
+</ion-content>
