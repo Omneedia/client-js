@@ -1,5 +1,5 @@
 import { isBrowser } from './util'
-import fetch from 'isomorphic-fetch'
+import fetch from 'cross-fetch'
 
 export interface TResponse {
   data: undefined | {}
@@ -12,9 +12,14 @@ export default class OmneediaRequest {
   private url: string = ''
   private options?: any
   private ref?: any
-  private fetch = fetch
+  private fetch: any
   constructor(ref: any) {
     this.ref = ref
+    if (isBrowser()) {
+      this.fetch = globalThis.fetch.bind(globalThis)
+    } else {
+      this.fetch = fetch
+    }
   }
   async get(uri: string, o: any) {
     if (uri.indexOf('://') > -1) var url = `${uri}`
@@ -27,6 +32,11 @@ export default class OmneediaRequest {
       headers.redirect_to = window.location.origin + window.location.pathname
     } else {
       // use cookie
+      const token = this.ref.options.cookies.getAll()
+      if (token) {
+        const bearer = token.find((el: any) => el.name === 'omneedia.auth.token')
+        if (bearer) headers.Authorization = 'Bearer ' + bearer.value
+      }
     }
     var res = await this.fetch(url, {
       headers: headers,
@@ -56,6 +66,11 @@ export default class OmneediaRequest {
       headers.redirect_to = window.location.origin + window.location.pathname
     } else {
       // use cookie
+      const token = this.ref.options.cookies.getAll()
+      if (token) {
+        const bearer = token.find((el: any) => el.name === 'omneedia.auth.token')
+        if (bearer) headers.Authorization = 'Bearer ' + bearer.value
+      }
     }
 
     var res = await this.fetch(url, {
@@ -85,6 +100,11 @@ export default class OmneediaRequest {
       }
     } else {
       // use cookie
+      const token = this.ref.options.cookies.getAll()
+      if (token) {
+        const bearer = token.find((el: any) => el.name === 'omneedia.auth.token')
+        if (bearer) headers.Authorization = 'Bearer ' + bearer.value
+      }
     }
     var res = await this.fetch(url, {
       method: 'PATCH',
@@ -114,6 +134,11 @@ export default class OmneediaRequest {
       }
     } else {
       // use cookie
+      const token = this.ref.options.cookies.getAll()
+      if (token) {
+        const bearer = token.find((el: any) => el.name === 'omneedia.auth.token')
+        if (bearer) headers.Authorization = 'Bearer ' + bearer.value
+      }
     }
     var res = await this.fetch(url, {
       method: 'PUT',
@@ -136,7 +161,6 @@ export default class OmneediaRequest {
     if (uri.indexOf('://') > -1) var url = `${uri}`
     else var url = `${this.ref.omneediaUrl}${uri}`
     let headers = this.ref.headers()
-    headers.redirect_to = window.location.origin + window.location.pathname
     if (isBrowser()) {
       headers.redirect_to = window.location.origin + window.location.pathname
       if (localStorage.getItem('omneedia.auth.token')) {
@@ -144,6 +168,11 @@ export default class OmneediaRequest {
       }
     } else {
       // use cookie
+      const token = this.ref.options.cookies.getAll()
+      if (token) {
+        const bearer = token.find((el: any) => el.name === 'omneedia.auth.token')
+        if (bearer) headers.Authorization = 'Bearer ' + bearer.value
+      }
     }
     var res = await this.fetch(url, {
       method: 'POST',

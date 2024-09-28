@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 
 module.exports = {
+  cache: false,
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist/umd'),
@@ -25,7 +26,11 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.json'],
   },
-  plugins: [],
+  plugins: [
+    new webpack.DefinePlugin({
+      process: 'process/browser',
+    }),
+  ],
   mode: 'production',
   externals: [],
 }

@@ -1,6 +1,6 @@
 var client = omneedia.createClient(
-  'http://127.0.0.1:8000',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6Im9tbmVlZGlhIiwiaWF0IjoxNjkxNzQ1ODMyfQ.MomxdhdRjiagTag5y2PJGXhZZrkon-_HrDc8QHtBK7E'
+  'http://localhost:8000',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTcyNjg2MTQ4OH0.fsIJu0uDoMBBxXnHuoXtMlwF4sGHxkFGkLpFDfKuV9g'
 )
 
 client.auth.onAuthStateChange(async (event, session) => {
@@ -39,6 +39,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 last_name: 'Zucatti',
               },
             },
+          })
+        case 'login_via_cerema':
+          return client.auth.signInWithProvider({
+            provider: 'cerema',
           })
         case 'login_via_github':
           return client.auth.signInWithProvider({

@@ -4,8 +4,17 @@ import OmneediaRealtime from './lib/realtime'
 import OmneediaAuth from './lib/auth'
 import OmneediaRequest from './lib/request'
 import prefix from './env/prefix'
+import type { GenericSchema } from './lib/types'
 
-export default class OmneediaClient {
+export default class OmneediaClient<
+  Database = any,
+  SchemaName extends string & keyof Database = 'public' extends keyof Database
+    ? 'public'
+    : string & keyof Database,
+  Schema extends GenericSchema = Database[SchemaName] extends GenericSchema
+    ? Database[SchemaName]
+    : any
+> {
   protected PREFIX = prefix
 
   public auth: OmneediaAuth
