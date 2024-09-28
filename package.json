@@ -1,6 +1,6 @@
 {
   "name": "@omneedia/client-js",
-  "version": "2.0.1",
+  "version": "2.1.1",
   "description": "Isomorphic Javascript client for Omneedia",
   "keywords": [
     "javascript",
